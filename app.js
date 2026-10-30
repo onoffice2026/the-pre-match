@@ -1,0 +1,3 @@
+document.querySelectorAll('[data-utc]').forEach(function(x){try{var d=new Date(x.getAttribute('data-utc'));var f=x.getAttribute('data-f')||'t';
+var o=f==='d'?{weekday:'short',day:'numeric',month:'short'}:(f==='dt'?{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hour12:false}:{weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false});
+x.textContent=d.toLocaleString(undefined,o);}catch(e){}});
