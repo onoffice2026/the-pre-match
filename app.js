@@ -9,6 +9,9 @@ function dur(){var w=trk.scrollWidth/2;trk.style.setProperty('--dur',Math.max(25
 function ora(d){try{return new Date(d).toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit',hour12:false})}catch(e){return ''}}
 function nm(x){x=x||{};var t=x.team||{};return t.shortDisplayName||t.displayName||t.name||''}
 function run(){fetch(B+'data/fixtures.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){var now=Date.now(),L={};
+if(!trk.children.length){var st=(d.matches||[]).filter(function(m){return rk(m.league)<100&&Math.abs(Date.parse(m.kickoff_utc)-now)<1728e5}).sort(function(a,b){return a.kickoff_utc<b.kickoff_utc?-1:1}).slice(0,24)
+.map(function(m){return '<div class="it">'+(m.played?'FT  '+esc(m.home)+' '+m.home_goals+'–'+m.away_goals+' '+esc(m.away):esc(ora(m.kickoff_utc))+'  '+esc(m.home)+' – '+esc(m.away))+'</div>'}).join('');
+if(st){trk.innerHTML=st+st;dur()}}
 (d.matches||[]).forEach(function(m){var t=Date.parse(m.kickoff_utc);if(t>now-4*36e5&&t<now+14*36e5)L[m.league]=1});
 var ls=Object.keys(L).sort(function(a,b){return rk(a)-rk(b)}).slice(0,14);if(!ls.length)return;
 return Promise.all(ls.map(function(lg){return fetch('https://site.api.espn.com/apis/site/v2/sports/soccer/'+lg+'/scoreboard').then(function(r){return r.json()}).catch(function(){return null})}))
@@ -24,3 +27,19 @@ if(!ok)return;pre.sort(function(x,y){return x[0]-y[0]});var it=live.length?live.
 try{sessionStorage.setItem('pm_prev',JSON.stringify(prev));sessionStorage.setItem('pm_gol',JSON.stringify(gol))}catch(e){}
 if(it.length){var hh=it.join('');trk.innerHTML=hh+hh;dur()}})}).catch(function(){})}
 dur();run();setInterval(run,60000)})();
+(function(){var b=document.getElementById('thm');if(!b)return;function lab(){b.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'Light':'Dark'}lab();
+b.addEventListener('click',function(){var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);
+try{localStorage.setItem('pm_theme',t)}catch(e){}lab()})})();
+(function(){var R=document.getElementById('sres'),Q=document.getElementById('q');if(!R||!Q)return;var B=R.getAttribute('data-base')||'';var D=null;
+function nz(s){try{s=String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')}catch(e){s=String(s||'')}return s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var LAB={league:'Leagues',team:'Teams',player:'Players',article:'Articles'};
+function show(){var q=nz(Q.value);if(!D)return;if(q.length<2){R.innerHTML='<p class="meta">Type at least two letters: a league, a club, a player or a story.</p>';return}
+var w=q.split(' '),g={league:[],team:[],player:[],article:[]};D.forEach(function(x){var h=x.k;for(var i=0;i<w.length;i++)if(h.indexOf(w[i])<0)return;
+var s=(h.indexOf(q)===0?0:(h.indexOf(' '+q)>=0?1:2));if(g[x.t])g[x.t].push([s,x])});var out='';
+['team','player','league','article'].forEach(function(t){var L=g[t];if(!L.length)return;L.sort(function(a,b){return a[0]-b[0]});
+out+='<h3>'+LAB[t]+' ('+L.length+')</h3>'+L.slice(0,t==='player'?40:25).map(function(z){var x=z[1];return '<a href="'+esc(B+x.u)+'"><b>'+esc(x.n)+'</b><span>'+esc(x.s||'')+'</span></a>'}).join('')});
+R.innerHTML=out||'<p class="meta">Nothing found for “'+esc(Q.value)+'”.</p>'}
+fetch(B+'data/search.json').then(function(r){return r.json()}).then(function(d){D=d.map(function(x){x.k=nz(x.n+' '+(x.a||''));return x});
+try{var p=new URLSearchParams(location.search).get('q');if(p)Q.value=p}catch(e){}show()}).catch(function(){R.innerHTML='<p class="meta">Search is not available right now.</p>'});
+Q.addEventListener('input',show)})();
