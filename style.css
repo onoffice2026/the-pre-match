@@ -7,8 +7,12 @@ a{color:var(--ink);text-decoration:none}a:hover{color:var(--red)}
 .mast div{font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-top:10px;color:var(--muted)}
 nav.m{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 28px;padding:12px 0;border-top:3px double var(--ink);border-bottom:1px solid var(--ink);font-weight:600;font-size:15px}
 nav.m a.teep{color:var(--red)}
-.tick{display:flex;overflow-x:auto;border-bottom:1px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:13px}
-.tick div{flex:0 0 auto;padding:9px 16px;border-right:1px solid var(--line);white-space:nowrap}
+.tick{overflow:hidden;border-bottom:1px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:13px;white-space:nowrap;min-height:37px}
+.tick .trk{display:inline-flex;animation:pmscroll var(--dur,80s) linear infinite;will-change:transform}
+.tick:hover .trk{animation-play-state:paused}
+.tick .it{flex:0 0 auto;padding:9px 16px;border-right:1px solid var(--line);white-space:nowrap}
+.tick .lv{color:var(--red);font-weight:600;margin-right:6px}.tick .gol{color:#d0021b;font-weight:700}
+@keyframes pmscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .cols{display:flex;flex-wrap:wrap;gap:40px;padding:30px 0}.main{flex:999 1 620px;min-width:0}.rail{flex:1 1 320px;min-width:0;border-left:1px solid var(--ink);padding-left:28px}
 .ph{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--soft);display:block}
 .cap{font-size:12px;color:var(--muted);margin-top:6px}
