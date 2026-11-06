@@ -3,7 +3,7 @@
 a{color:var(--ink);text-decoration:none}a:hover{color:var(--red)}
 .w{max-width:1280px;margin:0 auto;padding:0 24px}
 .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:12px 0;font-size:13px;color:var(--muted);border-bottom:1px solid var(--ink)}
-.mast{text-align:center;padding:26px 0 16px}.mast a{display:block;position:relative;white-space:nowrap}.mlogo{position:absolute;left:0;top:-.155em;height:1.065em;width:1.065em;border-radius:22%;box-shadow:0 0 0 1px rgba(0,0,0,.08)}/* [29zz266] her 18:32: the white-tile logo, like the tab icon *//* [29zz264] her 18:27: +15% on the last size, centred on the THETEEP capitals *//* [29zz258] her 17:51 + [29zz259] 17:52: logo at the left end of the row, +15% twice, centred on the capitals */
+.mast{text-align:center;padding:26px 0 16px}.mast a{display:inline-flex;align-items:center;gap:.2em;white-space:nowrap}.mlogo{flex:none;height:.86em;width:.86em;position:relative;top:-.1em}/* [29zz266] her 18:32: the white-tile logo, like the tab icon *//* [29zz264] her 18:27: +15% on the last size, centred on the THETEEP capitals *//* [29zz258] her 17:51 + [29zz259] 17:52: logo at the left end of the row, +15% twice, centred on the capitals */
 .mast a{font-family:'Newsreader',Georgia,serif;font-weight:800;font-size:clamp(44px,8vw,76px);letter-spacing:-2px;line-height:1}
 .lph{position:relative}.lph.noimg{min-height:72px;background:var(--soft)}
 .lnav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:30px;line-height:40px;cursor:pointer;z-index:3;padding:0}
