@@ -84,3 +84,4 @@ a.cu:hover{color:var(--red)}
 :root[data-theme=dark] .fx,:root[data-theme=dark] td,:root[data-theme=dark] .cu,:root[data-theme=dark] .list a.row,:root[data-theme=dark] .more a{border-color:var(--line)}
 :root[data-theme=dark] .fx .s{color:var(--bg)}:root[data-theme=dark] .fx .s.k{color:var(--ink)}:root[data-theme=dark] .chips a.on{color:var(--bg)}
 :root[data-theme=dark] .leg.ok,:root[data-theme=dark] .st.WON{color:#5fd38a}:root[data-theme=dark] img{opacity:.92}
+.flags{display:inline-flex;gap:8px;align-items:center;margin-left:14px}.flags a{display:inline-flex;opacity:.55;line-height:0;border:1px solid transparent}.flags a.on{opacity:1;border-color:var(--ink,#111)}.flags a:hover{opacity:1}.flags svg{display:block}
