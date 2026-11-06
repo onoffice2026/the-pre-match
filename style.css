@@ -3,7 +3,7 @@
 a{color:var(--ink);text-decoration:none}a:hover{color:var(--red)}
 .w{max-width:1280px;margin:0 auto;padding:0 24px}
 .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:12px 0;font-size:13px;color:var(--muted);border-bottom:1px solid var(--ink)}
-.mast{text-align:center;padding:26px 0 16px}.mast a{display:inline-flex;align-items:center;gap:.16em}.mlogo{width:.82em;height:.82em;border-radius:22%;flex:none}
+.mast{text-align:center;padding:26px 0 16px}.mast a{display:inline-block;white-space:nowrap}.mlogo{height:.7em;width:.7em;vertical-align:baseline;margin:0 .3em 0 -.6em;border-radius:22%}
 .mast a{font-family:'Newsreader',Georgia,serif;font-weight:800;font-size:clamp(44px,8vw,76px);letter-spacing:-2px;line-height:1}
 .mast div{font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-top:10px;color:var(--muted)}
 nav.m{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 28px;padding:12px 0;border-top:3px double var(--ink);border-bottom:1px solid var(--ink);font-weight:600;font-size:15px}
