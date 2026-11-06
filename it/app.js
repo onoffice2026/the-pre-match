@@ -43,3 +43,12 @@ R.innerHTML=out||'<p class="meta">Nothing found for “'+esc(Q.value)+'”.</p>'
 fetch(B+'data/search.json').then(function(r){return r.json()}).then(function(d){D=d.map(function(x){x.k=nz(x.n+' '+(x.a||''));return x});
 try{var p=new URLSearchParams(location.search).get('q');if(p)Q.value=p}catch(e){}show()}).catch(function(){R.innerHTML='<p class="meta">La ricerca non è disponibile ora.</p>'});
 Q.addEventListener('input',show)})();
+
+/* [29zz261] lead story arrows + THETEEP banner */
+(function(){var c=document.querySelector('.lcar');if(!c)return;var S=[].slice.call(c.querySelectorAll('.lsl')),i=0;
+function show(k){i=(k+S.length)%S.length;S.forEach(function(s,j){s.hidden=j!==i})}
+c.addEventListener('click',function(ev){var b=ev.target.closest('.lnav');if(b){ev.preventDefault();show(i+(b.classList.contains('lnext')?1:-1));return}
+var x=ev.target.closest('.tban-x');if(x){ev.preventDefault();ev.stopPropagation();c.classList.add('tban-off');try{sessionStorage.setItem('tban_off','1')}catch(_){}return}
+var t=ev.target.closest('.tban');if(t&&!ev.target.closest('a')){window.open(t.getAttribute('data-app'),'_blank','noopener')}});
+try{if(sessionStorage.getItem('tban_off')==='1')c.classList.add('tban-off')}catch(_){}
+document.addEventListener('keydown',function(ev){if(ev.target.closest&&ev.target.closest('input,textarea'))return;if(ev.key==='ArrowRight')show(i+1);if(ev.key==='ArrowLeft')show(i-1)});})();

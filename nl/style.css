@@ -3,11 +3,29 @@
 a{color:var(--ink);text-decoration:none}a:hover{color:var(--red)}
 .w{max-width:1280px;margin:0 auto;padding:0 24px}
 .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:12px 0;font-size:13px;color:var(--muted);border-bottom:1px solid var(--ink)}
-.mast{text-align:center;padding:26px 0 16px}.mast a{display:block;position:relative;white-space:nowrap}.mlogo{position:absolute;left:0;top:-.06em;height:.926em;width:.926em;border-radius:22%}/* [29zz258] her 17:51 + [29zz259] 17:52: logo at the left end of the row, +15% twice, centred on the capitals */
+.mast{text-align:center;padding:26px 0 16px}.mast a{display:block;position:relative;white-space:nowrap}.mlogo{position:absolute;left:0;top:-.155em;height:1.065em;width:1.065em;border-radius:22%;box-shadow:0 0 0 1px rgba(0,0,0,.08)}/* [29zz266] her 18:32: the white-tile logo, like the tab icon *//* [29zz264] her 18:27: +15% on the last size, centred on the THETEEP capitals *//* [29zz258] her 17:51 + [29zz259] 17:52: logo at the left end of the row, +15% twice, centred on the capitals */
 .mast a{font-family:'Newsreader',Georgia,serif;font-weight:800;font-size:clamp(44px,8vw,76px);letter-spacing:-2px;line-height:1}
+.lph{position:relative}.lph.noimg{min-height:72px;background:var(--soft)}
+.lnav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:30px;line-height:40px;cursor:pointer;z-index:3;padding:0}
+.lnav:hover{background:rgba(0,0,0,.75)}.lprev{left:14px}.lnext{right:14px}.lph.noimg .lnav{top:14px}
+.lph>a>img{display:block}
+.tban{position:absolute;left:14%;right:14%;bottom:24px;z-index:2;display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 44px 10px 16px;cursor:pointer;
+ background:linear-gradient(100deg,rgba(14,14,14,.62),rgba(14,14,14,.48));-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);border:1px solid rgba(240,180,69,.55);border-radius:10px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.35)}
+.tban-l{width:38px;height:38px;flex:none;position:relative;z-index:1;border-radius:9px;box-shadow:0 2px 8px rgba(0,0,0,.4);animation:tbpulse 2.4s ease-in-out infinite}
+.tban-orb{transform-box:view-box;transform-origin:32px 32px;animation:tbspin 2.5s linear infinite}
+@keyframes tbspin{from{transform:rotate(-50deg)}to{transform:rotate(310deg)}}@keyframes tbpulse{0%,100%{filter:none}50%{filter:brightness(1.12) drop-shadow(0 0 6px rgba(242,184,75,.55))}}
+@media(prefers-reduced-motion:reduce){.tban-orb,.tban-l{animation:none}}
+.tban-k{position:relative;z-index:1;text-shadow:0 1px 3px rgba(0,0,0,.9);font:800 11px/1 Inter,system-ui,sans-serif;letter-spacing:2.5px;color:#F0B445;flex:none}
+.tban-k::before{content:"";position:absolute;left:50%;top:50%;width:62px;height:62px;transform:translate(-50%,-50%);background:url(logo.svg) center/contain no-repeat;opacity:.6;z-index:-1;pointer-events:none}
+.tban-a{flex:0 1 auto;color:#fff;text-decoration:none;position:relative;z-index:1}
+.tban-t{font-family:'Newsreader',Georgia,serif;font-weight:700;font-size:clamp(16px,2vw,21px);color:#fff}
+.tban:hover .tban-t{text-decoration:underline;text-underline-offset:3px}
+.tban-x{position:absolute;right:10px;top:50%;transform:translateY(-50%);z-index:2;width:26px;height:26px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#eee;font:400 18px/26px Inter,system-ui,sans-serif;padding:0;cursor:pointer}
+.tban-x:hover{background:rgba(255,255,255,.28);color:#fff}.tban-off .tban{display:none}
+@media(max-width:600px){.tban{bottom:14px;left:8px;right:8px;padding:9px 40px 9px 10px}.tban-k{display:none}.lnav{width:36px;height:36px;font-size:24px;line-height:32px}}
 .mast div{font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-top:10px;color:var(--muted)}
-nav.m{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 28px;padding:12px 0;border-top:3px double var(--ink);border-bottom:1px solid var(--ink);font-weight:600;font-size:15px}
-nav.m a.teep{color:var(--red)}
+nav.m{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 28px;padding:12px 0;border-top:3px double var(--ink);border-bottom:1px solid var(--ink);font-weight:600;font-size:15px}
+nav.m a.teep{color:var(--red)}nav.m>a{line-height:1.2}nav.m .srch{align-self:center}/* [29zz267] her 18:33: the links centred on the Search box */
 .tick{overflow:hidden;border-bottom:1px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:13px;white-space:nowrap;min-height:37px}
 .tick .trk{display:inline-flex;animation:pmscroll var(--dur,80s) linear infinite;will-change:transform}
 .tick:hover .trk{animation-play-state:paused}
