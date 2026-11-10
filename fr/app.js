@@ -1,5 +1,5 @@
 document.querySelectorAll('[data-utc]').forEach(function(x){try{var d=new Date(x.getAttribute('data-utc'));var f=x.getAttribute('data-f')||'t';
-var o=f==='d'?{weekday:'short',day:'numeric',month:'short'}:(f==='dt'?{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hour12:false}:{weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false});
+var o=f==='d'?{weekday:'short',day:'numeric',month:'short'}:(f==='dt'?{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hour12:false}:{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',hour12:false});
 x.textContent=d.toLocaleString(undefined,o);}catch(e){}});
 (function(){var T=document.getElementById('live');if(!T)return;var B=T.getAttribute('data-base')||'';var trk=T.querySelector('.trk');if(!trk)return;
 var ORD=["uefa.champions", "uefa.europa", "uefa.europa.conf", "eng.1", "esp.1", "ita.1", "ger.1", "fra.1", "por.1", "ned.1", "bel.1", "tur.1", "sco.1", "gre.1", "aut.1", "sui.1", "den.1", "rou.1", "pol.1", "cze.1", "nor.1", "swe.1", "bra.1", "arg.1", "usa.1", "mex.1"];function rk(l){var i=ORD.indexOf(l);return i<0?100:i}
